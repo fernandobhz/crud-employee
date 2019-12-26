@@ -3,6 +3,8 @@
 const PouchDB = require('pouchdb');
 const designDocuments = require('../designDocuments');
 
+if (!process.env.DB) process.env.DB = 'EMBEDDED';
+
 const db = new PouchDB(process.env.DB);
 
 module.exports = async () => {
