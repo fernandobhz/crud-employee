@@ -14,12 +14,12 @@ exports.get = async id => {
   return db.get(id);
 };
 
-// Update an employee
-exports.put = async doc => {
-  return db.put({ ...doc, type });
-};
-
 // Insert an new employee
 exports.post = async doc => {
   return db.post({ ...doc, type });
+};
+
+// Update an employee
+exports.put = async doc => {
+  return db.put({ ...doc, type });
 };

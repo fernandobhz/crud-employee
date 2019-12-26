@@ -12,12 +12,12 @@ exports.get = async id => {
   return model.get(id);
 };
 
-// Update an employee
-exports.put = async doc => {
-  return model.put(doc);
-};
-
 // Insert an new employee
 exports.post = async doc => {
   return model.post(doc);
+};
+
+// Update an employee
+exports.put = async doc => {
+  return model.put(doc);
 };
