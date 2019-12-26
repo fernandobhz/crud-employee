@@ -1,1 +1,46 @@
-Hello world
+﻿<html>
+
+<head>
+  <title>Super simple front-end for testing</title>
+</head>
+
+<body onload="dataRnd()">
+	<div class="center">
+    <h1 style="text-align: center">Super simple front-end for testing</h1>
+    </div>
+
+		Nome: <input id="ename" type="text" value=""><br>
+		PID: <input id="pid" type="text" value=""><br>
+		EID: <input id="eid" type="text" value=""><br>
+		Senha: <input id="password" type="text" value=""><br>
+		<button onclick="put()">put</button><br><br>
+		<textarea id="putResults" style="width: 80%; height: 400px"></textarea><br><br>
+		_id: <input id="_id" type="text" value=""><br>
+
+		<hr>
+
+		<button onclick="post()">post</button><br><br>
+		<textarea id="postResults" style="width: 80%; height: 400px"></textarea><br><br>
+
+		<hr>
+
+		<button onclick="get()">get</button><br>
+		<textarea id="getResults" style="width: 80%; height: 400px">
+		</textarea>
+
+		<hr>
+
+
+
+		<button onclick="getOne()">GetUser</button><br>
+		<textarea id="getOneResults" style="width: 80%; height: 400px">
+
+		</textarea>
+
+		<hr>
+
+    <script src="/jquery-3.4.1.min.js"></script>
+    <script src="/script.js"></script>
+</body>
+
+</html>

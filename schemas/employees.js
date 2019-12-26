@@ -2,11 +2,7 @@ const Joi = require('@hapi/joi');
 
 // I would improve that fields if I had time until delivery date.
 
-module.exports = {
-  _id: Joi.string()
-    .alphanum()
-    .min(1)
-    .required(),
+module.exports = Joi.object({
   name: Joi.string()
     .alphanum()
     .min(1)
@@ -22,4 +18,4 @@ module.exports = {
     .max(255)
     .required(),
   password: Joi.string().min(6)
-};
+});

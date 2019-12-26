@@ -28,7 +28,7 @@ router.put('/', async (req, res, next) => {
   const { error, value } = schema.validate(req.body);
 
   if (error) {
-    return res.status(400).json(value);
+    return res.status(400).json(error);
   }
 
   try {
@@ -43,7 +43,7 @@ router.post('/', async (req, res, next) => {
   const { error, value } = schema.validate(req.body);
 
   if (error) {
-    return res.json(value);
+    return res.json(error);
   }
 
   try {
