@@ -89,8 +89,6 @@ var RandomNames = {
   }
 };
 
-
-
 function dataRnd() {
   window.ename.value = RandomNames.generate(1)[0];
   window.pid.value = `${Math.round(Math.random() * 1000, 0)}`;
@@ -98,7 +96,7 @@ function dataRnd() {
   window.password.value = `${Math.round(Math.random() * 10000000000, 0)}`;
 }
 
-function put() {
+function post() {
   const putData = JSON.stringify({
     name: window.ename.value,
     pid: window.pid.value,
@@ -108,18 +106,31 @@ function put() {
 
   dataRnd();
 
-  $.put('/employees', putData, data => {
+  $.post('/employees', putData, data => {
     window.data = data;
-    window.putResults.innerHTML = JSON.stringify(data, null, 4);
-    window._id.value = data._id;
+    window.postResults.innerHTML = JSON.stringify(data, null, 4);
+    window._id.value = data.id;
+    window._rev.value = data.rev;
   });
 }
 
-function post() {
-  $.post('/employees', window.putResults, data => {
-    window.data = data;
-    window.postResults.innerHTML = JSON.stringify(data, null, 4);
+function put() {
+  const putData = JSON.stringify({
+    _id: window._id.value,
+    _rev: window._rev.value,
+    name: window.ename.value,
+    pid: window.pid.value,
+    eid: window.eid.value,
+    password: window.password.value
   });
+
+  $.put('/employees', putData, data => {
+    window.data = data;
+    window.putResults.innerHTML = JSON.stringify(data, null, 4);
+    window._id.value = data.id;
+    window._rev.value = data.rev;
+  });
+
 }
 
 function get() {

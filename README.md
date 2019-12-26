@@ -17,8 +17,7 @@ Insert a new employee and assign an ID to it
   min-lenght: 1  
   required
   
-  name: the name of employee  
-    alphanum  
+  name: the name of employee    
     min: 1  
     max: 255  
     required  
@@ -29,7 +28,6 @@ Insert a new employee and assign an ID to it
     required  
 
   eid: email id
-    alphanum  
     min: 1  
     max: 255  
     required

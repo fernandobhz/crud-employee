@@ -13,28 +13,30 @@
 		PID: <input id="pid" type="text" value=""><br>
 		EID: <input id="eid" type="text" value=""><br>
 		Senha: <input id="password" type="text" value=""><br>
-		<button onclick="put()">put</button><br><br>
-		<textarea id="putResults" style="width: 80%; height: 400px"></textarea><br><br>
-		_id: <input id="_id" type="text" value=""><br>
-
-		<hr>
-
 		<button onclick="post()">post</button><br><br>
 		<textarea id="postResults" style="width: 80%; height: 400px"></textarea><br><br>
+		_id: <input id="_id" type="text" value="" style="width: 70%"><br>
+		_rev: <input id="_rev" type="text" value="" style="width: 70%"><br>
+		<hr>
+		<br><br>
+
+		<button onclick="put()">put</button><br><br>
+		<textarea id="putResults" style="width: 80%; height: 400px"></textarea><br><br>
 
 		<hr>
+		<br><br>
 
-		<button onclick="get()">get</button><br>
-		<textarea id="getResults" style="width: 80%; height: 400px">
+
+		<button onclick="getOne()">get</button><br>
+		<textarea id="getOneResults" style="width: 80%; height: 400px">
+
 		</textarea>
 
 		<hr>
+		<br><br>
 
-
-
-		<button onclick="getOne()">GetUser</button><br>
-		<textarea id="getOneResults" style="width: 80%; height: 400px">
-
+		<button onclick="get()">all</button><br>
+		<textarea id="getResults" style="width: 80%; height: 400px">
 		</textarea>
 
 		<hr>
