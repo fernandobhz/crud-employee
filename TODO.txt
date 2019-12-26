@@ -1,6 +1,3 @@
-will try to run without couchdb, only with pouchdb embbeded.
-
 unit testing
 user registration
 jwt
-heroku
