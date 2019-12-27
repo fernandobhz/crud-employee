@@ -1,0 +1,54 @@
+﻿<html>
+
+<head>
+  <title>Users testing</title>
+</head>
+
+<body onload="dataRnd()">
+	<div class="center">
+    <h1 style="text-align: center">Super simple front-end for testing</h1>
+    </div>
+
+		Username: <input id="username" type="text" value=""><br>
+		Password: <input id="password" type="text" value=""><br>
+		<button onclick="post()">post</button><br><br>
+		<textarea id="postResults" style="width: 80%; height: 400px"></textarea><br><br>
+		_id: <input id="_id" type="text" value="" style="width: 70%"><br>
+		_rev: <input id="_rev" type="text" value="" style="width: 70%"><br>
+		<hr>
+		<br><br>
+
+		<button onclick="put()">put</button><br><br>
+		<textarea id="putResults" style="width: 80%; height: 400px"></textarea><br><br>
+
+		<hr>
+		<br><br>
+
+
+		<button onclick="getOne()">get</button><br>
+		<textarea id="getOneResults" style="width: 80%; height: 400px">
+
+		</textarea>
+
+		<hr>
+		<br><br>
+
+		<button onclick="get()">first 10</button><br>
+		<textarea id="getResults" style="width: 80%; height: 400px">
+		</textarea>
+
+		<hr>
+
+		<br><br>
+
+		<button onclick="del()">del</button><br>
+		<textarea id="delResults" style="width: 80%; height: 400px">
+		</textarea>
+
+		<script src="../jquery-3.4.1.min.js"></script>
+		<script src="../jquerySetup.js"></script>
+		<script src="../randomNames.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+/* eslint-disable */
+
+function dataRnd() {
+  window.username.value = randomNames.generate();
+  window.password.value = `${Math.round(Math.random() * 10000000000, 0)}`;
+}
+
+function post() {
+  const putData = JSON.stringify({
+    username: window.username.value,
+    password: window.password.value
+  });
+
+  dataRnd();
+
+  $.post('/users', putData, data => {
+    window.data = data;
+    window.postResults.innerHTML = JSON.stringify(data, null, 4);
+    window._id.value = data.id;
+    window._rev.value = data.rev;
+  });
+}
+
+function put() {
+  const putData = JSON.stringify({
+    _id: window._id.value,
+    _rev: window._rev.value,
+    username: window.username.value,
+    password: window.password.value
+  });
+
+  $.put('/users', putData, data => {
+    window.data = data;
+    window.putResults.innerHTML = JSON.stringify(data, null, 4);
+    window._id.value = data.id;
+    window._rev.value = data.rev;
+  });
+}
+
+function get() {
+  const getData = {
+    limit: 10
+  };
+
+  $.get(`/users`, getData, data => {
+    window.data = data;
+    window.getResults.innerHTML = JSON.stringify(data, null, 4);
+  });
+}
+
+function getOne() {
+  $.get(`/users/${window._id.value}`, data => {
+    window.data = data;
+    window.getOneResults.innerHTML = JSON.stringify(data, null, 4);
+  });
+}
+
+
+function del() {
+  const delData = JSON.stringify({
+    _id: window._id.value,
+    _rev: window._rev.value    
+  });
+
+  $.delete('/users', delData, data => {
+    window.data = data;
+    window.delResults.innerHTML = JSON.stringify(data, null, 4);
+  });
+}
