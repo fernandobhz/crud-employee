@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
+require('../setup');
 
 const controller = require('./employees');
 const randomNames = require('../public/randomNames');
@@ -49,7 +50,7 @@ describe('testing the crud operations on employee', () => {
   let getResult;
 
   it('getting the record from database', async () => {
-    expect.assertions(7);
+    expect.assertions(6);
 
     getResult = await controller.get(postResult.id);
 

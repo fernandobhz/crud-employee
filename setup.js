@@ -1,2 +1,2 @@
 require('dotenv').config();
-require('./models/setup')();
+require('./database');

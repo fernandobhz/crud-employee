@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
+require('../setup');
 
 const controller = require('./users');
 const randomNames = require('../public/randomNames');
