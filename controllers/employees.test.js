@@ -4,6 +4,6 @@
 
 // get form db
 
-//  get all from db
+// get all from db
 
 // delete that emplooyee
