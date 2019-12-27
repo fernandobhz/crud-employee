@@ -1,8 +1,10 @@
+user registration
+
+jwt
+
 usar  as classes de erros em vez de catch experando vir do couchdb
 
 colocar mais campos 
 
-user registration
 
-jwt
 

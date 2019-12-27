@@ -3,23 +3,21 @@
 
 require('../setup');
 
-const controller = require('./employees');
+const controller = require('./users');
 const randomNames = require('../public/randomNames');
 
-const makeRandomEmployee = () => {
-  const name = randomNames.generate();
-  const pid = Math.round(Math.random() * 1000, 0);
-  const eid = name.replace(' ', '.').toLowerCase();
+const makeRandomUser = () => {
+  const username = randomNames.generate().replace(' ', '.');
   const password = Math.round(Math.random() * 10000000000, 0);
 
-  return { name, pid, eid, password };
+  return { username, password };
 };
 
-describe('testing the crud operations on employee', () => {
-  const postData = makeRandomEmployee();
+describe('testing the crud operations on user', () => {
+  const postData = makeRandomUser();
   let postResult;
 
-  it('inserting a new employee', async () => {
+  it('inserting a new user', async () => {
     expect.assertions(4);
 
     postResult = await controller.post(postData);
@@ -32,7 +30,7 @@ describe('testing the crud operations on employee', () => {
 
   let putResult;
 
-  it('updating the employee password', async () => {
+  it('updating the user password', async () => {
     expect.assertions(4);
 
     const putData = {
@@ -52,16 +50,14 @@ describe('testing the crud operations on employee', () => {
   let getResult;
 
   it('getting the record from database', async () => {
-    expect.assertions(7);
+    expect.assertions(5);
 
     getResult = await controller.get(postResult.id);
 
     expect(getResult._id).toBe(postResult.id);
     expect(getResult._rev).toBe(putResult.rev);
-    expect(getResult.type).toBe('employees');
-    expect(getResult.name).toBe(postData.name);
-    expect(getResult.pid).toBe(postData.pid);
-    expect(getResult.eid).toBe(postData.eid);
+    expect(getResult.type).toBe('users');
+    expect(getResult.username).toBe(postData.username);
     expect(getResult.password).toBe(postData.password);
   });
 
@@ -80,7 +76,7 @@ describe('testing the crud operations on employee', () => {
 
   let deleteResults;
 
-  it('deleting the created employee', async () => {
+  it('deleting the created user', async () => {
     expect.assertions(4);
 
     const deleteData = {
