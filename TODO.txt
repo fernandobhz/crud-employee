@@ -1,10 +1,7 @@
+terminar o login / logout com jwt
+
 jest for access login logout
 
-jwt
-
-usar  as classes de erros em vez de catch experando vir do couchdb
+jest for invalid errors like put with wrong rev
 
 colocar mais campos 
-
-refatorar status(err.status)
-
