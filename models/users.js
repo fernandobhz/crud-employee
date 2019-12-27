@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const PouchDB = require('pouchdb');
+const PouchDB = require('../database');
 
 const db = new PouchDB(process.env.DB);
 const type = 'users';

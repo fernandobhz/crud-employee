@@ -3,16 +3,14 @@
 function dataRnd() {
   window.ename.value = randomNames.generate();
   window.pid.value = `${Math.round(Math.random() * 1000, 0)}`;
-  window.eid.value = window.ename.value.replace(' ', '.').toLowerCase();
-  window.password.value = `${Math.round(Math.random() * 10000000000, 0)}`;
+  window.eid.value = window.ename.value.replace(' ', '.').toLowerCase();  
 }
 
 function post() {
   const putData = JSON.stringify({
     name: window.ename.value,
     pid: window.pid.value,
-    eid: window.eid.value,
-    password: window.password.value
+    eid: window.eid.value    
   });
 
   dataRnd();
@@ -32,7 +30,6 @@ function put() {
     name: window.ename.value,
     pid: window.pid.value,
     eid: window.eid.value,
-    password: window.password.value
   });
 
   $.put('/employees', putData, data => {

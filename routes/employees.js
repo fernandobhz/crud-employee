@@ -10,10 +10,7 @@ const router = express.Router();
 // Insert an new employee
 router.post('/', async (req, res, next) => {
   const { error, value } = postSchema.validate(req.body);
-
-  if (error) {
-    return res.json(error);
-  }
+  if (error) return res.status(400).json(error);
 
   try {
     return res.json(await controller.post(req.body));
@@ -25,10 +22,7 @@ router.post('/', async (req, res, next) => {
 // Update an employee
 router.put('/', async (req, res, next) => {
   const { error, value } = putSchema.validate(req.body);
-
-  if (error) {
-    return res.status(400).json(error);
-  }
+  if (error) return res.status(400).json(error); 
 
   try {
     return res.json(await controller.put(req.body));
@@ -60,10 +54,7 @@ router.get('/:id', async (req, res, next) => {
 // Delete the specified employee
 router.delete('/', async (req, res, next) => {
   const { error, value } = deleteSchema.validate(req.body);
-
-  if (error) {
-    return res.status(400).json(error);
-  }
+  if (error) return res.status(400).json(error);
 
   try {
     return res.json(await controller.delete(req.body));

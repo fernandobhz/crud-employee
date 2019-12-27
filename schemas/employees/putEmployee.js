@@ -18,6 +18,5 @@ module.exports = Joi.object({
   eid: Joi.string()
     .min(1)
     .max(255)
-    .required(),
-  password: Joi.string().min(6)
+    .required()
 });

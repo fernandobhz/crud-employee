@@ -1,8 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
 
-require('../setup');
-
 const controller = require('./employees');
 const randomNames = require('../public/randomNames');
 
@@ -10,9 +8,8 @@ const makeRandomEmployee = () => {
   const name = randomNames.generate();
   const pid = Math.round(Math.random() * 1000, 0);
   const eid = name.replace(' ', '.').toLowerCase();
-  const password = Math.round(Math.random() * 10000000000, 0);
 
-  return { name, pid, eid, password };
+  return { name, pid, eid };
 };
 
 describe('testing the crud operations on employee', () => {
@@ -32,7 +29,7 @@ describe('testing the crud operations on employee', () => {
 
   let putResult;
 
-  it('updating the employee password', async () => {
+  it('updating the employee', async () => {
     expect.assertions(4);
 
     const putData = {
@@ -62,7 +59,6 @@ describe('testing the crud operations on employee', () => {
     expect(getResult.name).toBe(postData.name);
     expect(getResult.pid).toBe(postData.pid);
     expect(getResult.eid).toBe(postData.eid);
-    expect(getResult.password).toBe(postData.password);
   });
 
   let listResult;
