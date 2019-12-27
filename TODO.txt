@@ -1,10 +1,6 @@
 usar  as classes de erros em vez de catch experando vir do couchdb
 
-colocar mais compos 
-
-rev tem padrao e da para conferir no schema
-
-unit testing
+colocar mais campos 
 
 user registration
 

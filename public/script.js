@@ -44,7 +44,11 @@ function put() {
 }
 
 function get() {
-  $.get(`/employees`, data => {
+  const getData = {
+    limit: 10
+  };
+
+  $.get(`/employees`, getData, data => {
     window.data = data;
     window.getResults.innerHTML = JSON.stringify(data, null, 4);
   });

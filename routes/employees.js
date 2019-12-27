@@ -49,7 +49,9 @@ router.get('/:id', async (req, res, next) => {
 // Returns the list of all employess
 router.get('/', async (req, res, next) => {
   try {
-    return res.json(await controller.getAll());
+    return res.json(
+      await controller.getAll(req.query.limit, req.query.startkey)
+    );
   } catch (err) {
     return res.status(err.status).json(err);
   }

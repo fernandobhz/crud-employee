@@ -20,8 +20,13 @@ exports.get = async id => {
 };
 
 // Returns the list of all employess
-exports.getAll = async () => {
-  return db.query('type', { key: type, include_docs: true });
+exports.getAll = async (limit, startkey) => {
+  const options = { key: type, include_docs: true };
+
+  if (limit) options.limit = limit;
+  if (startkey) options.startkey = startkey;
+
+  return db.query('type', options);
 };
 
 // Delete the specified employee

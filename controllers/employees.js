@@ -18,8 +18,8 @@ exports.get = async id => {
 };
 
 // Returns the list of all employess
-exports.getAll = async () => {
-  return model.getAll();
+exports.getAll = async (limit, startkey) => {
+  return model.getAll(limit, startkey);
 };
 
 // Delete the specified employee
