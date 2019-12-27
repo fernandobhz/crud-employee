@@ -1,4 +1,5 @@
 const PouchDB = require('../database');
+const DatabaseError = require('../classes/errors/DatabaseError');
 
 const db = new PouchDB(process.env.DB);
 
@@ -11,6 +12,6 @@ exports.getUserByUsername = async username => {
       }
     });
   } catch (err) {
-    return null;
+    throw new DatabaseError(err);
   }
 };

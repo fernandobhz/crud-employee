@@ -1,22 +1,35 @@
 /* eslint-disable no-unused-vars */
 const PouchDB = require('../database');
+const DatabaseError = require('../classes/errors/DatabaseError');
 
 const db = new PouchDB(process.env.DB);
 const type = 'users';
 
 // Insert an new user
 exports.post = async doc => {
-  return db.post({ ...doc, type });
+  try {
+    return await db.post({ ...doc, type });
+  } catch (err) {
+    throw new DatabaseError(err);
+  }
 };
 
 // Update an user
 exports.put = async doc => {
-  return db.put({ ...doc, type });
+  try {
+    return await db.put({ ...doc, type });
+  } catch (err) {
+    throw new DatabaseError(err);
+  }
 };
 
 // Return the specified user
 exports.get = async id => {
-  return db.get(id);
+  try {
+    return await db.get(id);
+  } catch (err) {
+    throw new DatabaseError(err);
+  }
 };
 
 // Returns the list of all employess
@@ -26,10 +39,18 @@ exports.getAll = async (limit, startkey) => {
   if (limit) options.limit = limit;
   if (startkey) options.startkey = startkey;
 
-  return db.query('type', options);
+  try {
+    return await db.query('type', options);
+  } catch (err) {
+    throw new DatabaseError(err);
+  }
 };
 
 // Delete the specified user
 exports.delete = async idrev => {
-  return db.remove(idrev);
+  try {
+    return await db.remove(idrev);
+  } catch (err) {
+    throw new DatabaseError(err);
+  }
 };
