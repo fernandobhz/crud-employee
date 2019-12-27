@@ -37,21 +37,21 @@ router.put('/', async (req, res, next) => {
   }
 });
 
-// Return the specified employee
-router.get('/:id', async (req, res, next) => {
+// Returns the list of all employess
+router.get('/list', async (req, res, next) => {
   try {
-    return res.json(await controller.get(req.params.id));
+    return res.json(
+      await controller.getAll(req.query.limit, req.query.startkey)
+    );
   } catch (err) {
     return res.status(err.status).json(err);
   }
 });
 
-// Returns the list of all employess
-router.get('/', async (req, res, next) => {
+// Return the specified employee
+router.get('/:id', async (req, res, next) => {
   try {
-    return res.json(
-      await controller.getAll(req.query.limit, req.query.startkey)
-    );
+    return res.json(await controller.get(req.params.id));
   } catch (err) {
     return res.status(err.status).json(err);
   }

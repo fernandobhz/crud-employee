@@ -42,7 +42,7 @@ function get() {
     limit: 10
   };
 
-  $.get(`/users`, getData, data => {
+  $.get(`/users/list`, getData, data => {
     window.data = data;
     window.getResults.innerHTML = JSON.stringify(data, null, 4);
   });

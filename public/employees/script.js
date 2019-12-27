@@ -48,7 +48,7 @@ function get() {
     limit: 10
   };
 
-  $.get(`/employees`, getData, data => {
+  $.get(`/employees/list`, getData, data => {
     window.data = data;
     window.getResults.innerHTML = JSON.stringify(data, null, 4);
   });
