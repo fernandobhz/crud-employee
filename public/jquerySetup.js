@@ -8,7 +8,6 @@ $.ajaxSetup({
 });
 
 $.put = function(url, data, callback, type){
- 
   if ( $.isFunction(data) ){
     type = type || callback,
     callback = data,
@@ -26,7 +25,6 @@ $.put = function(url, data, callback, type){
 
 
 $.delete = function(url, data, callback, type){
- 
   if ( $.isFunction(data) ){
     type = type || callback,
         callback = data,

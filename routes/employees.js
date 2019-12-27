@@ -1,14 +1,37 @@
 /* eslint-disable no-unused-vars */
 const express = require('express');
-const schema = require('../schemas/employees');
+const putSchema = require('../schemas/employees/putEmployee');
+const postSchema = require('../schemas/employees/postEmployee');
+const deleteSchema = require('../schemas/deleteObject');
 const controller = require('../controllers/employees');
 
 const router = express.Router();
 
-// Returns the list of all employess
-router.get('/', async (req, res, next) => {
+// Insert an new employee
+router.post('/', async (req, res, next) => {
+  const { error, value } = postSchema.validate(req.body);
+
+  if (error) {
+    return res.json(error);
+  }
+
   try {
-    return res.json(await controller.getAll());
+    return res.json(await controller.post(req.body));
+  } catch (err) {
+    return res.status(err.status).json(err);
+  }
+});
+
+// Update an employee
+router.put('/', async (req, res, next) => {
+  const { error, value } = putSchema.validate(req.body);
+
+  if (error) {
+    return res.status(400).json(error);
+  }
+
+  try {
+    return res.json(await controller.put(req.body));
   } catch (err) {
     return res.status(err.status).json(err);
   }
@@ -23,31 +46,25 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-// Update an employee
-router.put('/', async (req, res, next) => {
-  const { error, value } = schema.validate(req.body);
+// Returns the list of all employess
+router.get('/', async (req, res, next) => {
+  try {
+    return res.json(await controller.getAll());
+  } catch (err) {
+    return res.status(err.status).json(err);
+  }
+});
+
+// Delete the specified employee
+router.delete('/', async (req, res, next) => {
+  const { error, value } = deleteSchema.validate(req.body);
 
   if (error) {
     return res.status(400).json(error);
   }
 
   try {
-    return res.json(await controller.put(req.body));
-  } catch (err) {
-    return res.status(err.status).json(err);
-  }
-});
-
-// Insert an new employee
-router.post('/', async (req, res, next) => {
-  const { error, value } = schema.validate(req.body);
-
-  if (error) {
-    return res.json(error);
-  }
-
-  try {
-    return res.json(await controller.post(req.body));
+    return res.json(await controller.delete(req.body));
   } catch (err) {
     return res.status(err.status).json(err);
   }

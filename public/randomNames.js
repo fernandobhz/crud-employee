@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-var RandomNames = {
+const randomNames = {
   firstNames: [
     'Vinicius',
     'Talita',
@@ -51,4 +51,10 @@ var RandomNames = {
     else return names;
   }
 };
+
+try {
+  module.exports = randomNames;
+} catch(err) {
+
+}
 
