@@ -6,34 +6,27 @@ const PouchDBFind = require('pouchdb-find');
 const designDocuments = require('../designDocuments');
 const mangoIndexes = require('../mangoIndexes');
 
-let hasRunned = false;
+PouchDB.plugin(PouchDBFind);
 
-module.exports = () => {
-  if (!hasRunned) hasRunned = true;
-  else return PouchDB;
+if (!process.env.DB) process.env.DB = 'EMBEDDED';
+const db = new PouchDB(process.env.DB);
 
-  PouchDB.plugin(PouchDBFind);
+// Creating all designDocuments
+Object.values(designDocuments).forEach(async ddoc => {
+  try {
+    await db.put(ddoc);
+  } catch (err) {
+    if (err.name !== 'conflict') throw err;
+  }
+});
 
-  if (!process.env.DB) process.env.DB = 'EMBEDDED';
-  const db = new PouchDB(process.env.DB);
+// Creating all mango indexes
+Object.values(mangoIndexes).forEach(async midx => {
+  try {
+    await db.createIndex(midx);
+  } catch (err) {
+    if (err.name !== 'conflict') throw err;
+  }
+});
 
-  // Creating all designDocuments
-  Object.values(designDocuments).forEach(async ddoc => {
-    try {
-      await db.put(ddoc);
-    } catch (err) {
-      if (err.name !== 'conflict') throw err;
-    }
-  });
-
-  // Creating all mango indexes
-  Object.values(mangoIndexes).forEach(async midx => {
-    try {
-      await db.createIndex(midx);
-    } catch (err) {
-      if (err.name !== 'conflict') throw err;
-    }
-  });
-
-  return PouchDB;
-};
+module.exports = PouchDB;
