@@ -25,6 +25,6 @@ exports.getAll = async () => {
 };
 
 // Delete the specified employee
-exports.put = async idrev => {
+exports.delete = async idrev => {
   return db.remove(idrev);
 };
