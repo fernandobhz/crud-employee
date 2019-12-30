@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 
+const sha1 = require('sha1');
 const model = require('../models/users');
 const errorHandling = require('../helpers/errorHandling');
 const jwtToken = require('../helpers/jwtToken');
@@ -21,10 +22,13 @@ exports.post = async doc => {
       `The username ${doc.username} already exists ${JSON.stringify(user)}`
     );
   } else {
-    const ret = await model.post(doc);
+    user = { ...doc };
+    user.password = sha1(doc.password);
+
+    const ret = await model.post(user);
     return {
       ...ret,
-      token: jwtToken.encode({ _id: ret.id, _rev: ret.rev, ...doc })
+      token: jwtToken.encode({ _id: ret.id, _rev: ret.rev, ...user })
     };
   }
 };

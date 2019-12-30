@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 const express = require('express');
-const sha1 = require('sha1');
 const putSchema = require('../schemas/users/putUser');
 const postSchema = require('../schemas/users/postUser');
 const deleteSchema = require('../schemas/deleteObject');
@@ -13,8 +12,6 @@ const router = express.Router();
 router.post('/', async (req, res, next) => {
   const { error, value } = postSchema.validate(req.body);
   if (error) return res.status(400).json(error);
-
-  req.body.password = sha1(req.body.password);
 
   try {
     return res.json(await controller.post(req.body));
