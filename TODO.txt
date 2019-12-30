@@ -1,16 +1,14 @@
-middleware to ensure jwt token
+middleware auth
 
-validar output tambem com joi
+front-end to login
 
-logout com jwt, como?
+jest login
 
-jwt 2 chaves?
-adaptar front-end para enviar barrear
-  usar localStorage para guardar barear
+validar output / joi
 
-jest for access login logout
+logout com jwt
 
-jest for invalid errors like put with wrong rev
+jest com dados inesperados
 
 colocar mais campos 
 

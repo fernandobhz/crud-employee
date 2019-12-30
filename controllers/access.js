@@ -17,3 +17,8 @@ exports.login = async (username, password) => {
     throw new AuthError();
   }
 };
+
+exports.logout = async () => {
+  // Research the web to see a performatic way to logout with JWT
+  return {};
+};

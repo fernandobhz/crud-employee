@@ -18,7 +18,7 @@ router.post('/login', async (req, res, next) => {
   }
 });
 
-router.get('/logout', async (req, res, next) => {
+router.post('/logout', async (req, res, next) => {
   try {
     return res.json(await controller.logout());
   } catch (err) {

@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const helmet = require('helmet');
 
+const publicRoutes = require('./publicRoutes');
+
 const usersRouter = require('./routes/users');
 const employeesRouter = require('./routes/employees');
 const accessRouter = require('./routes/access');
@@ -18,13 +20,18 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
 
+app.use((req, res, next) => {
+  if (publicRoutes[req.method].some(re => re.test(req.path))) next();
+  else res.status(403).end();
+});
+
 app.use('/users', usersRouter);
 app.use('/employees', employeesRouter);
 app.use('/access', accessRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  next(createError(404));
+  res.status(404).end();
 });
 
 // error handler
