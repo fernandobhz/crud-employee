@@ -1,9 +1,9 @@
-const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const helmet = require('helmet');
+const jwtToken = require('./helpers/jwtToken');
 
 const publicRoutes = require('./publicRoutes');
 
@@ -22,7 +22,29 @@ app.use(helmet());
 
 app.use((req, res, next) => {
   if (publicRoutes[req.method].some(re => re.test(req.path))) next();
-  else res.status(403).end();
+  else {
+    /*
+     * if you have the token, then you are authorized to do everything
+     * almost for now :-)
+     */
+
+    try {
+      const auth = req.headers.authorization;
+      const parts = auth.split(' ');
+
+      if (parts.length !== 2)
+        throw new Error('Unexpect request authorization header');
+      if (parts[0] !== 'Baerer')
+        throw new Error('Request authorization header invalid');
+
+      const token = parts[1];
+
+      if (jwtToken.validate(token)) next();
+      else throw new Error('Invalid token');
+    } catch (err) {
+      res.status(403).end();
+    }
+  }
 });
 
 app.use('/users', usersRouter);

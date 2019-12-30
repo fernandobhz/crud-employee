@@ -2,7 +2,7 @@
 
 const model = require('../models/users');
 const errorHandling = require('../helpers/errorHandling');
-const token = require('../helpers/token');
+const jwtToken = require('../helpers/jwtToken');
 const InputError = require('../classes/errors/InputError');
 const DatabaseError = require('../classes/errors/DatabaseError');
 
@@ -22,7 +22,7 @@ exports.post = async doc => {
     );
   } else {
     const ret = await model.post(doc);
-    return { ...ret, token: token(user) };
+    return { ...ret, token: jwtToken.encode(user) };
   }
 };
 
