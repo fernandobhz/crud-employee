@@ -2,9 +2,9 @@
 
 $.ajaxSetup({
   contentType: 'application/json; charset=utf-8'
-  /* , beforeSend(xhr) {
-    xhr.setRequestHeader('Authorization', `Bearer ${window.token.value}`);
-  } */
+  , beforeSend(xhr) {
+    xhr.setRequestHeader('Authorization', `Bearer ${localStorage.getItem('token')}`);
+  }
 });
 
 $.put = function(url, data, callback, type){

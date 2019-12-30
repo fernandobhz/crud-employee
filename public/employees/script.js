@@ -4,6 +4,8 @@ function dataRnd() {
   window.ename.value = randomNames();
   window.pid.value = randomIntegers(8);
   window.eid.value = window.ename.value.replace(/\s/g, '.').toLowerCase();  
+
+  window.token.value = localStorage.getItem('token');
 }
 
 function post() {

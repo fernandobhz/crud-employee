@@ -3,6 +3,8 @@
 function dataRnd() {
   window.username.value = randomNames();
   window.password.value = randomIntegers(10);
+
+  window.token.value = localStorage.getItem('token');
 }
 
 function post() {
@@ -18,6 +20,9 @@ function post() {
     window.postResults.innerHTML = JSON.stringify(data, null, 4);
     window._id.value = data.id;
     window._rev.value = data.rev;
+    window.token.value = data.token;
+    
+    localStorage.setItem('token', token);
   });
 }
 
