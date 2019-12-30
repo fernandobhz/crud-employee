@@ -1,7 +1,5 @@
 ## Tem que fazer
 
-> Jest login
-
 > Logout com jwt
 
 > Jest com dados inesperados
