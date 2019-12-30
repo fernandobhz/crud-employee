@@ -1,7 +1,5 @@
 ## Tem que fazer
 
-> Middleware auth
-
 > Front-end to login
 
 > Jest login
@@ -17,6 +15,9 @@
 
 > Validar output / joi
 
+> Hoje estou sendo extremamente restritivo com os erros, não estou retornando nada que possa comprometer a segurança, mas seria legal ter uma env/variable para mandar
+mais detalhes desses errros para o front-end trabalhar, ou o front-end ter acesso ao
+output do app.
 
 ## Precisa analisar mais
 

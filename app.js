@@ -34,7 +34,7 @@ app.use((req, res, next) => {
 
       if (parts.length !== 2)
         throw new Error('Unexpect request authorization header');
-      if (parts[0] !== 'Baerer')
+      if (parts[0] !== 'Bearer')
         throw new Error('Request authorization header invalid');
 
       const token = parts[1];

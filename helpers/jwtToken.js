@@ -6,7 +6,7 @@ exports.decode = token => jwt.decode(token, process.env.JWT);
 
 exports.validate = token => {
   try {
-    this.decode(token);
+    this.decode(token, process.env.JWT);
     return true;
   } catch (err) {
     return false;

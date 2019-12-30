@@ -22,7 +22,7 @@ function post() {
     window._rev.value = data.rev;
     window.token.value = data.token;
     
-    localStorage.setItem('token', token);
+    localStorage.setItem('token', data.token);
   });
 }
 
