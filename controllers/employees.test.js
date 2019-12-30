@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
-require('../setup');
 
 const controller = require('./employees');
 const random = require('../public/random');
