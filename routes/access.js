@@ -11,7 +11,9 @@ router.post('/login', async (req, res, next) => {
   if (error) return res.status(400).json(error);
 
   try {
-    return res.json(await controller.login(req.body));
+    return res.json(
+      await controller.login(req.body.username, req.body.password)
+    );
   } catch (err) {
     if (err instanceof AuthError) return res.status(403).send('Access Denied');
     else return res.status(500);

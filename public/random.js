@@ -53,7 +53,7 @@ const randomNamesGenerator = {
 };
 
 function randomNames(qtd) {
-  return randomNamesGenerator.generate(qtd);
+  return 'TESTING: ' + randomNamesGenerator.generate(qtd);
 }
 
 function randomIntegers(digits) {

@@ -1,7 +1,5 @@
 ## Tem que fazer
 
-> Front-end to login
-
 > Jest login
 
 > Logout com jwt
