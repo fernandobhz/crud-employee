@@ -3,12 +3,12 @@
 require('../setup');
 
 const controller = require('./employees');
-const randomNames = require('../public/randomNames');
+const random = require('../public/random');
 
 const makeRandomEmployee = () => {
-  const name = randomNames.generate();
-  const pid = Math.round(Math.random() * 1000, 0);
-  const eid = name.replace(' ', '.').toLowerCase();
+  const name = random.names();
+  const pid = random.intergers(5);
+  const eid = name.replace(/\s/g, '.').toLowerCase();
 
   return { name, pid, eid };
 };

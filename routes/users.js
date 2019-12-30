@@ -4,6 +4,7 @@ const putSchema = require('../schemas/users/putUser');
 const postSchema = require('../schemas/users/postUser');
 const deleteSchema = require('../schemas/deleteObject');
 const controller = require('../controllers/users');
+const errorHandling = require('../helpers/errorHandling');
 
 const router = express.Router();
 
@@ -15,7 +16,7 @@ router.post('/', async (req, res, next) => {
   try {
     return res.json(await controller.post(req.body));
   } catch (err) {
-    return res.status(err.status).json(err);
+    errorHandling(err, req, res, next);
   }
 });
 
@@ -27,7 +28,7 @@ router.put('/', async (req, res, next) => {
   try {
     return res.json(await controller.put(req.body));
   } catch (err) {
-    return res.status(err.status).json(err);
+    errorHandling(err, req, res, next);
   }
 });
 
@@ -38,10 +39,7 @@ router.get('/list', async (req, res, next) => {
       await controller.getAll(req.query.limit, req.query.startkey)
     );
   } catch (err) {
-    if (err instanceof DatabaseError)
-      return res.status(err.innerError.status).json(err.innerError);
-    else 
-      return res.status(500).end();
+    errorHandling(err, req, res, next);
   }
 });
 
@@ -50,10 +48,7 @@ router.get('/:id', async (req, res, next) => {
   try {
     return res.json(await controller.get(req.params.id));
   } catch (err) {
-    if (err instanceof DatabaseError)
-      return res.status(err.innerError.status).json(err.innerError);
-    else 
-      return res.status(500).end();
+    errorHandling(err, req, res, next);
   }
 });
 
@@ -65,10 +60,7 @@ router.delete('/', async (req, res, next) => {
   try {
     return res.json(await controller.delete(req.body));
   } catch (err) {
-    if (err instanceof DatabaseError)
-      return res.status(err.innerError.status).json(err.innerError);
-    else 
-      return res.status(500).end();
+    errorHandling(err, req, res, next);
   }
 });
 

@@ -3,11 +3,16 @@
 require('../setup');
 
 const controller = require('./users');
-const randomNames = require('../public/randomNames');
+const random = require('../public/random');
 
 const makeRandomUser = () => {
-  const username = randomNames.generate().replace(' ', '.');
-  const password = Math.round(Math.random() * 10000000000, 0);
+  const rnd = random.intergers(10);
+
+  let username = random.names();
+  username = username.replace(/\s/g, '.');
+  username = `${username}.${rnd}`;
+
+  const password = random.intergers(10);
 
   return { username, password };
 };

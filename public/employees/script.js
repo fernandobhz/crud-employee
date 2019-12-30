@@ -1,9 +1,9 @@
 /* eslint-disable */
 
 function dataRnd() {
-  window.ename.value = randomNames.generate();
-  window.pid.value = `${Math.round(Math.random() * 1000, 0)}`;
-  window.eid.value = window.ename.value.replace(' ', '.').toLowerCase();  
+  window.ename.value = randomNames();
+  window.pid.value = randomIntegers(8);
+  window.eid.value = window.ename.value.replace(/\s/g, '.').toLowerCase();  
 }
 
 function post() {

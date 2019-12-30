@@ -20,7 +20,8 @@ module.exports = {
   },
   plugins: ['prettier', 'jest'],
   rules: {
-      'allowElseIf': false,
+      'no-unused-vars': ['error', {args: 'none'}],
+      'no-else-return': 0,
       'prettier/prettier': 'error',
       'jest/no-disabled-tests': 'warn',
       'jest/no-focused-tests': 'error',

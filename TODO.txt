@@ -1,7 +1,19 @@
-terminar o login / logout com jwt
+middleware to ensure jwt token
+
+validar output tambem com joi
+
+logout com jwt, como?
+
+jwt 2 chaves?
+adaptar front-end para enviar barrear
+  usar localStorage para guardar barear
 
 jest for access login logout
 
 jest for invalid errors like put with wrong rev
 
 colocar mais campos 
+
+swagger
+
+random.js não está totalmente UMD

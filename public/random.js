@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-const randomNames = {
+const randomNamesGenerator = {
   firstNames: [
     'Vinicius',
     'Talita',
@@ -52,9 +52,17 @@ const randomNames = {
   }
 };
 
+function randomNames(qtd) {
+  return randomNamesGenerator.generate(qtd);
+}
+
+function randomIntegers(digits) {
+  return Math.round(Math.random() * 10 ** (digits - 1), 0);
+}
+
 try {
-  module.exports = randomNames;
+  exports.names = randomNames;
+  exports.intergers = randomIntegers;
 } catch(err) {
 
 }
-

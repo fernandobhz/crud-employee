@@ -1,8 +1,8 @@
 /* eslint-disable */
 
 function dataRnd() {
-  window.username.value = randomNames.generate();
-  window.password.value = `${Math.round(Math.random() * 10000000000, 0)}`;
+  window.username.value = randomNames();
+  window.password.value = randomIntegers(10);
 }
 
 function post() {

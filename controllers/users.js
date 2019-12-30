@@ -1,10 +1,29 @@
 /* eslint-disable no-unused-vars */
 
 const model = require('../models/users');
+const errorHandling = require('../helpers/errorHandling');
+const token = require('../helpers/token');
+const InputError = require('../classes/errors/InputError');
+const DatabaseError = require('../classes/errors/DatabaseError');
 
 // Insert an new user
 exports.post = async doc => {
-  return model.post(doc);
+  let user;
+
+  try {
+    user = await model.getUserByUsername(doc.username);
+  } catch (err) {
+    // continue regardless of errors
+  }
+
+  if (user) {
+    throw new InputError(
+      `The username ${doc.username} already exists ${JSON.stringify(user)}`
+    );
+  } else {
+    const ret = await model.post(doc);
+    return { ...ret, token: token(user) };
+  }
 };
 
 // Update an user

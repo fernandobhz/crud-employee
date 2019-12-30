@@ -54,3 +54,22 @@ exports.delete = async idrev => {
     throw new DatabaseError(err);
   }
 };
+
+/* Other non-default methods */
+
+// Get user by username
+exports.getUserByUsername = async username => {
+  try {
+    const ret = await db.find({
+      selector: {
+        type,
+        username
+      }
+    });
+
+    if (ret.docs.length === 0) return null;
+    else return ret.docs[0];
+  } catch (err) {
+    throw new DatabaseError(err);
+  }
+};
