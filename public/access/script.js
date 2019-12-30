@@ -17,7 +17,7 @@ function login() {
 }
 
 function logout() {
-  $.put('/access/logout', () => {
+  $.post('/access/logout', () => {
     localStorage.removeItem('token');
     window.token.value = "";
   });
