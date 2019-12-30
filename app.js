@@ -39,6 +39,10 @@ app.use((req, res, next) => {
 
       const token = parts[1];
 
+      const data2 = jwtToken.decode(token);
+      // eslint-disable-next-line no-console
+      console.log(data2);
+
       if (jwtToken.validate(token)) next();
       else throw new Error('Invalid token');
     } catch (err) {

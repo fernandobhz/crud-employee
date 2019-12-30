@@ -22,7 +22,10 @@ exports.post = async doc => {
     );
   } else {
     const ret = await model.post(doc);
-    return { ...ret, token: jwtToken.encode(user) };
+    return {
+      ...ret,
+      token: jwtToken.encode({ _id: ret.id, _rev: ret.rev, ...doc })
+    };
   }
 };
 
