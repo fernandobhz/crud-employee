@@ -3,6 +3,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const helmet = require('helmet');
+const cors = require('cors');
 const jwtToken = require('./helpers/jwtToken');
 
 const publicRoutes = require('./publicRoutes');
@@ -13,12 +14,13 @@ const accessRouter = require('./routes/access');
 
 const app = express();
 
+app.use(helmet());
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(helmet());
 
 app.use((req, res, next) => {
   if (publicRoutes[req.method].some(re => re.test(req.path))) next();

@@ -1,3 +1,12 @@
+## Prioridades
+> Paginacao, arrumar, key
+> Logout, 2 chaves (15mins + redis?)
+> Api docs
+> Swaggers
+> Links para nex prev last
+
+
+
 ## Tem que fazer
 
 > Logout com jwt
